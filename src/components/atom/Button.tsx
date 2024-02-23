@@ -6,6 +6,7 @@ interface StyleProps {
   $bgColor?: string;
   width?: string;
   $border?: string;
+  $hoverBgColor?: string;
 }
 const Button = styled.button<StyleProps>`
   background-color: ${(StyleProps) => StyleProps.$bgColor};
@@ -15,6 +16,11 @@ const Button = styled.button<StyleProps>`
   border-radius: 10px;
   border: ${(StyleProps) => StyleProps.$border || "none"};
   font-size: ${fontSizes.m};
+  cursor: pointer;
+  &:hover {
+    transition: all 0.3s;
+    background-color: ${(StyleProps) => StyleProps.$hoverBgColor};
+  }
 `;
 
 export default Button;
