@@ -9,6 +9,7 @@ const colors = {
   lightGray02: "#D1D1D1",
   lightGray03: "#bdbdbd",
   bgColor: "#F3F2F7",
+  hoverMainColor: "#6b5bc8",
 };
 
 export default colors;
