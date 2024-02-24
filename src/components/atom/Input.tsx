@@ -27,20 +27,24 @@ interface Props {
   title?: string;
   inputType?: string;
   placeholder?: string;
-  onChange?: (event: any) => void;
+  register: any;
+  name: string;
 }
 
-export const Input = ({ title, inputType, placeholder, onChange }: Props) => {
-  const handleOnChange = (event: any) => {
-    if (onChange) onChange(event);
-  };
+export const Input: React.FC<Props> = ({
+  title,
+  inputType,
+  placeholder,
+  register,
+  name,
+}) => {
   return (
     <>
       <Title>{title}</Title>
       <StyledInput
         type={inputType}
         placeholder={placeholder}
-        onChange={handleOnChange}
+        {...register(name, { required: true })}
       ></StyledInput>
     </>
   );
