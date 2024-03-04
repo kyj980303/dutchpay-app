@@ -7,7 +7,7 @@ interface StyleProps {
   width?: string;
   $border?: string;
   $hoverBgColor?: string;
-  cursorStyle?: string;
+  $cursorStyle?: string;
 }
 const Button = styled.button<StyleProps>`
   background-color: ${(StyleProps) => StyleProps.$bgColor};
@@ -17,7 +17,7 @@ const Button = styled.button<StyleProps>`
   border-radius: 10px;
   border: ${(StyleProps) => StyleProps.$border || "none"};
   font-size: ${fontSizes.m};
-  cursor: ${(StyleProps) => StyleProps.cursorStyle || "pointer"};
+  cursor: ${(StyleProps) => StyleProps.$cursorStyle || "pointer"};
   &:hover {
     transition: all 0.3s;
     background-color: ${(StyleProps) => StyleProps.$hoverBgColor};

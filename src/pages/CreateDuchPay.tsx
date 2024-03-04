@@ -6,6 +6,8 @@ import colors from "../themes/colors";
 import Flex from "../components/layouts/Flex";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { createDuchPayState } from "../state/createDuchpayData";
 
 const ContentBox = styled.div`
   padding: 28px 23px;
@@ -22,6 +24,7 @@ type Inputs = {
 
 export const CreateDuchPay = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useRecoilState(createDuchPayState);
 
   const {
     register,
@@ -30,7 +33,7 @@ export const CreateDuchPay = () => {
   } = useForm<Inputs>();
 
   const createDutchpayData = (data: any) => {
-    console.log(data);
+    setFormData(data);
   };
 
   const handleCancel = () => {
@@ -80,8 +83,9 @@ export const CreateDuchPay = () => {
     <>
       <CenteredOverayContents>
         <ContentBox>
-          {data.map((item: any) => (
+          {data.map((item: any, index: number) => (
             <Input
+              key={index}
               title={item.title}
               inputType={item.inputType}
               register={register}
@@ -104,7 +108,7 @@ export const CreateDuchPay = () => {
               $bgColor={isValid ? colors.mainColor : colors.lightGray02}
               width="49%"
               onClick={isValid ? handleSubmit(createDutchpayData) : () => {}}
-              cursorStyle={isValid ? "pointer" : "default"}
+              $cursorStyle={isValid ? "pointer" : "default"}
             >
               추가
             </Button>
