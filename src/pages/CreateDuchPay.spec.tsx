@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { CreateDuchPay } from "../pages";
+import { CreateDuchPay } from ".";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
@@ -14,18 +14,16 @@ const renderComponent = () => {
   );
   // screen: 현재 렌더링 된 화면을 가리킴
   const input1 = screen.getByPlaceholderText("모임명을 입력해 주세요.");
-  const input2 = screen.getByPlaceholderText("총 인원을 입력해 주세요.");
-  const input3 = screen.getByPlaceholderText("내용을 입력해 주세요.");
-  const input4 = screen.getByPlaceholderText("총 사용금액을 입력해 주세요.");
-  const input5 = screen.getByPlaceholderText("결제자를 입력해 주세요.");
-  const input6 = screen.getByPlaceholderText("날짜를 입력해 주세요.");
+  const input2 = screen.getByPlaceholderText("내용을 입력해 주세요.");
+  const input3 = screen.getByPlaceholderText("총 사용금액을 입력해 주세요.");
+  const input4 = screen.getByPlaceholderText("결제자를 입력해 주세요.");
+  const input5 = screen.getByPlaceholderText("날짜를 입력해 주세요.");
   const createButton = screen.getByText("추가");
   const errorMessage1 = screen.queryByText("모임명을 입력해 주세요.");
-  const errorMessage2 = screen.queryByText("총 인원을 입력해 주세요.");
-  const errorMessage3 = screen.queryByText("내용을 입력해 주세요.");
-  const errorMessage4 = screen.queryByText("총 사용금액을 입력해 주세요.");
-  const errorMessage5 = screen.queryByText("결제자를 입력해 주세요.");
-  const errorMessage6 = screen.queryByText("날짜를 입력해 주세요.");
+  const errorMessage2 = screen.queryByText("내용을 입력해 주세요.");
+  const errorMessage3 = screen.queryByText("총 사용금액을 입력해 주세요.");
+  const errorMessage4 = screen.queryByText("결제자를 입력해 주세요.");
+  const errorMessage5 = screen.queryByText("날짜를 입력해 주세요.");
 
   return {
     input1,
@@ -33,20 +31,18 @@ const renderComponent = () => {
     input3,
     input4,
     input5,
-    input6,
     createButton,
     errorMessage1,
     errorMessage2,
     errorMessage3,
     errorMessage4,
     errorMessage5,
-    errorMessage6,
   };
 };
 
 describe("더치페이 생성 페이지", () => {
   test("더치페이 생성 컴포넌트가 렌더링 되는가?", () => {
-    const { input1, input2, input3, input4, input5, input6, createButton } =
+    const { input1, input2, input3, input4, input5, createButton } =
       renderComponent();
 
     // input1 이 null이 아니길 기대한다라는 뜻
@@ -55,7 +51,6 @@ describe("더치페이 생성 페이지", () => {
     expect(input3).not.toBeNull();
     expect(input4).not.toBeNull();
     expect(input5).not.toBeNull();
-    expect(input6).not.toBeNull();
     expect(createButton).not.toBeNull();
   });
 
@@ -86,22 +81,19 @@ describe("더치페이 생성 페이지", () => {
       input3,
       input4,
       input5,
-      input6,
       createButton,
       errorMessage1,
       errorMessage2,
       errorMessage3,
       errorMessage4,
       errorMessage5,
-      errorMessage6,
     } = renderComponent();
 
     await userEvent.type(input1, "예시 모임명");
-    await userEvent.type(input2, "예시 총 인원");
-    await userEvent.type(input3, "예시 내용");
-    await userEvent.type(input4, "예시 사용금액");
-    await userEvent.type(input5, "예시 결제자");
-    await userEvent.type(input6, "예시 날짜");
+    await userEvent.type(input2, "예시 내용");
+    await userEvent.type(input3, "예시 사용금액");
+    await userEvent.type(input4, "예시 결제자");
+    await userEvent.type(input5, "예시 날짜");
     await userEvent.click(createButton);
 
     expect(errorMessage1).toBeNull();
@@ -109,6 +101,5 @@ describe("더치페이 생성 페이지", () => {
     expect(errorMessage3).toBeNull();
     expect(errorMessage4).toBeNull();
     expect(errorMessage5).toBeNull();
-    expect(errorMessage6).toBeNull();
   });
 });
