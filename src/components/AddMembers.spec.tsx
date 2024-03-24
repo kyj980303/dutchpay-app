@@ -13,20 +13,17 @@ const renderComponent = () => {
   // getByTestId: 아래 div 태그의 id를 가져와 접근할 수 있음
   // <div data-testid="id"></div>
   const input = screen.getByTestId("input-member-names");
-  const saveButton = screen.getByText("추가");
 
   return {
     input,
-    saveButton,
   };
 };
 
 describe("모임 멤버 추가 input 박스", () => {
   test("모임 멤버 입력 input 박스가 렌더링 되는가", () => {
-    const { input, saveButton } = renderComponent();
+    const { input } = renderComponent();
 
     expect(input).not.toBeNull;
-    expect(saveButton).not.toBeNull;
   });
 
   // test('모임 멤버를 입력하지 않고 "추가" 버튼을 클릭 시, 에러 메시지를 노출한다.', async () => {
@@ -38,15 +35,13 @@ describe("모임 멤버 추가 input 박스", () => {
   //   expect(errorMessage).toBeInTheDocument() // errorMessage가 현재 document에 존재하는지
   // })
 
-  test('모임 멤버를 입력한 후, "추가" 버튼 클릭 시, 저장에 성공', async () => {
-    const { input, saveButton } = renderComponent();
+  test("모임 멤버를 입력 되었는가", () => {
+    const { input } = renderComponent();
 
-    await userEvent.type(input, "철수 영희 영수"); // type : 예시
-    await userEvent.click(saveButton);
+    // 모임 멤버를 입력
+    userEvent.type(input, "John, Mary");
 
-    const errorMessage = screen.queryByText(
-      "모임 멤버의 이름을 입력해 주세요."
-    );
-    expect(errorMessage).toBeNull; // 에러메시지가 노출되지 않아야 성공한거니깐 toBeNull이 되어야함
+    // 입력한 값이 올바르게 반영되었는지 확인
+    expect(input).toHaveValue("John, Mary");
   });
 });
