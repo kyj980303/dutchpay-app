@@ -7,7 +7,9 @@ import Flex from "../components/layouts/Flex";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { createDuchPayState } from "../state/createDuchpayData";
+import { createDuchPayState } from "../recoil/createDuchpayForm/atoms";
+import { AddMembers } from "../components/AddMembers";
+import { useState } from "react";
 
 const ContentBox = styled.div`
   padding: 28px 23px;
@@ -25,6 +27,7 @@ type Inputs = {
 export const CreateDuchPay = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useRecoilState(createDuchPayState);
+  const [isActiveAddBtn, setIsActiveAddBtn] = useState<boolean>(false);
 
   const {
     register,
@@ -83,16 +86,24 @@ export const CreateDuchPay = () => {
     <>
       <CenteredOverayContents>
         <ContentBox>
-          {data.map((item: any, index: number) => (
-            <Input
-              key={index}
-              title={item.title}
-              inputType={item.inputType}
-              register={register}
-              name={item.name}
-              placeholder={item.placeholder}
-            />
-          ))}
+          {data.map((item: any, index: number) => {
+            if (item.title !== "총 인원") {
+              return (
+                <Input
+                  key={index}
+                  title={item.title}
+                  inputType={item.inputType}
+                  register={register}
+                  name={item.name}
+                  placeholder={item.placeholder}
+                />
+              );
+            } else {
+              return (
+                <AddMembers key={index} setIsActiveAddBtn={setIsActiveAddBtn} />
+              );
+            }
+          })}
         </ContentBox>
         <Box padding="0px 23px">
           <Flex $gap="2%">
@@ -105,10 +116,18 @@ export const CreateDuchPay = () => {
               취소
             </Button>
             <Button
-              $bgColor={isValid ? colors.mainColor : colors.lightGray02}
+              $bgColor={
+                isValid && isActiveAddBtn
+                  ? colors.mainColor
+                  : colors.lightGray02
+              }
               width="49%"
-              onClick={isValid ? handleSubmit(createDutchpayData) : () => {}}
-              $cursorStyle={isValid ? "pointer" : "default"}
+              onClick={
+                isValid && isActiveAddBtn
+                  ? handleSubmit(createDutchpayData)
+                  : () => {}
+              }
+              $cursorStyle={isValid && isActiveAddBtn ? "pointer" : "default"}
             >
               추가
             </Button>
