@@ -36,6 +36,7 @@ const InputDiv = styled.div`
     font-weight: normal;
     border-radius: 5px;
     padding-top: 6px;
+    /* margin-bottom: 5px; */
   }
   .bg-transparent {
     margin-left: 3px;

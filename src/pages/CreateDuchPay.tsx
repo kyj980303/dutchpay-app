@@ -13,10 +13,11 @@ import { useState } from "react";
 
 const ContentBox = styled.div`
   padding: 28px 23px;
-  height: 650px;
+  height: 630px;
   @media (max-width: 1600px) {
-    height: 550px;
+    height: 530px;
   }
+  overflow-y: scroll;
 `;
 
 type Inputs = {
@@ -109,7 +110,7 @@ export const CreateDuchPay = () => {
             }
           })}
         </ContentBox>
-        <Box padding="0px 23px">
+        <Box padding="20px 23px">
           <Flex $gap="2%">
             <Button
               $bgColor={colors.gray03}
