@@ -81,7 +81,7 @@ export const CreateDuchPay = () => {
     },
     {
       title: "날짜",
-      inputType: "text",
+      inputType: "date",
       name: "date",
       placeholder: "날짜를 입력해 주세요.",
     },
