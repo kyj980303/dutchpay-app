@@ -33,10 +33,10 @@ const TabTitle = styled.button<props>`
 
 const ContentBox = styled.div`
   padding: 28px 23px;
-  height: 570px;
+  height: 627px;
   overflow-y: scroll;
   @media (max-width: 1600px) {
-    height: 470px;
+    height: 527px;
   }
 `;
 export const Main = () => {

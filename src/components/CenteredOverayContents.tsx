@@ -29,6 +29,7 @@ const Text = styled.p`
   color: ${colors.white};
   font-size: ${fontSizes.l};
   font-weight: bold;
+  margin-top: -4px;
 `;
 interface props {
   children: any;
@@ -38,7 +39,7 @@ export const CenteredOverayContents = ({ children }: props) => {
     <>
       <Container>
         <ContentsContainer>
-          <Box height="24px" $bgColor={colors.mainColor} padding="20px 23px">
+          <Box height="65px" $bgColor={colors.mainColor} padding="20px 23px">
             <Flex $gap="2%">
               <Icon iconName="icon" />
               <Text>더치페이</Text>

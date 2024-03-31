@@ -13,6 +13,10 @@ import { useState } from "react";
 
 const ContentBox = styled.div`
   padding: 28px 23px;
+  height: 650px;
+  @media (max-width: 1600px) {
+    height: 550px;
+  }
 `;
 
 type Inputs = {
@@ -45,16 +49,16 @@ export const CreateDuchPay = () => {
 
   const data = [
     {
-      title: "모임명",
-      inputType: "text",
-      name: "groupName",
-      placeholder: "모임명을 입력해 주세요.",
-    },
-    {
       title: "총 인원",
       inputType: "number",
       name: "memberNum",
       placeholder: "총 인원을 입력해 주세요.",
+    },
+    {
+      title: "모임명",
+      inputType: "text",
+      name: "groupName",
+      placeholder: "모임명을 입력해 주세요.",
     },
     {
       title: "내용",
