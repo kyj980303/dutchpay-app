@@ -38,8 +38,10 @@ const Icon = (props: IconProps) => {
     case "download":
       return (
         <svg
+          width="24"
+          height="20"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
+          viewBox="4 2 24 24"
           fill="currentColor"
         >
           <path d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z"></path>
@@ -48,8 +50,10 @@ const Icon = (props: IconProps) => {
     case "arrow":
       return (
         <svg
+          width="26"
+          height="24"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
+          viewBox="0 3 24 24"
           fill="currentColor"
         >
           <path d="M12 16L6 10H18L12 16Z"></path>
@@ -58,9 +62,9 @@ const Icon = (props: IconProps) => {
     case "inActiveCheckIcon":
       return (
         <svg
-          width="18"
+          width="30"
           height="18"
-          viewBox="0 0 18 18"
+          viewBox="3 0 18 18"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -74,9 +78,9 @@ const Icon = (props: IconProps) => {
     case "activeCheckIcon":
       return (
         <svg
-          width="18"
+          width="30"
           height="18"
-          viewBox="0 0 18 18"
+          viewBox="3 0 18 18"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

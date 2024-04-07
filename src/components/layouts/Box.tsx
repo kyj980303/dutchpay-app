@@ -12,6 +12,8 @@ export type BoxProps = {
   $marginLeft?: string;
   $bgColor?: string;
   $borderBottom?: string;
+  $overFlowY?: string;
+  $borderRadius?: string;
 };
 const Box = styled.div<BoxProps>`
   width: ${(props) => props.width || undefined};
@@ -24,6 +26,8 @@ const Box = styled.div<BoxProps>`
   margin-left: ${(props) => props.$marginLeft || undefined};
   background-color: ${(props) => props.$bgColor || undefined};
   border-bottom: ${(props) => props.$borderBottom || undefined};
+  overflow-y: ${(props) => props.$overFlowY || undefined};
+  border-radius: ${(props) => props.$borderRadius || undefined};
   @media (max-width: 1600px) {
     height: ${(props) => props.$minHeight || undefined};
   }
